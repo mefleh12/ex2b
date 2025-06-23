@@ -1,0 +1,209 @@
+/* המגיש : מופלח שיבלי , ת"ז : 214310633*/
+body {
+    background: url('background.png') repeat;
+    font-size: 1rem;
+    font-family: Tahoma, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Header Banner */
+header {
+    width: 100%;
+    height: 4rem;
+    background-image: url('bannerbg.png');
+    background-repeat: repeat-x;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: contain;
+}
+
+header img {
+    height: 100%;
+    width: auto;
+}
+
+/* Movie Title */
+h1 {
+    font-family: Verdana, Calibri, sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    color: #000;
+    text-shadow: 2px 2px #999999;
+    margin: 1rem 0;
+    background-image: url('background.png');
+}
+
+/* Main Layout */
+main {
+    width: 90%;
+    margin: auto;
+    border: 4px solid gray;
+    border-radius: 40px;
+    background-color: #F5F5DC;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    overflow: hidden;
+    background-image: url('background.png');
+    flex-wrap: wrap;
+}
+
+.left-content {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    width: 100%;
+}
+
+
+.rating {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    background-image: url('rbg.png');
+    background-repeat: repeat-x;
+    background-size: 100% 100%;
+    height: 90px;         /* ✅ make sure it's visible */
+    width: 100%;
+    padding-left: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+
+.rating img {
+    height: 90px;
+    margin-right: 1rem; /* ✅ only one margin-right */
+    flex-shrink: 0;
+}
+
+.rating span {
+    font-size: 4rem;
+    font-weight: bold;
+    color: red;
+    line-height: 90px;
+}
+
+.reviews {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* כל עמודת ביקורות */
+.reviews-col-left,
+.reviews-col-right {
+    width: 30%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+/* תיבת ביקורת */
+.review {
+    background-color: #e3daa3;
+    border: 2px solid gray;
+    border-radius: 20px;
+    padding: 8px;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+    overflow: hidden;
+}
+
+
+.review img {
+    float: left;
+    margin-right: 5px;
+}
+
+/* פרטי המבקר */
+.critic {
+    clear: left;
+    margin-top: 1rem;
+}
+
+/* Right Section (Overview) */
+.general-overview {
+    width: 25%;
+    background-color: #5D8B3E;
+    color: #F1F1E4;
+    
+}
+
+.general-overview img {
+    width: 100%;
+}
+
+.general-overview dl {
+    margin: 0;
+}
+
+.general-overview dt {
+    font-weight: bold;
+    margin-top: 0.9rem;
+}
+
+.general-overview dd {
+    margin-left: 0;
+    margin-bottom: 0.9rem;
+}
+
+/* Footer */
+footer {
+    background-color: #5D8B3E;
+    color: #FFF;
+    text-align: center;
+    padding: 0.5rem;
+    margin-top: auto;
+    font-size: 0.9rem;
+    width: 100%;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+/* התאמה למובייל */
+@media screen and (max-width: 786px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* הפוך את Overview General לראש העמוד */
+    .general-overview {
+        order: -1; /* מופיע ראשון */
+        width: 90%;
+        margin: 1rem auto;
+    }
+
+    .left-content {
+        width: 100%;
+        align-items: center;
+        padding: 0;
+    }
+
+    .rating {
+        width: 90%;
+        margin: 1rem auto;
+    }
+
+    /* ביקורות בעמודה אחת */
+    .reviews {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reviews-col-left,
+    .reviews-col-right {
+        width: 90%;
+        margin: 0 auto 1rem auto;
+    }
+
+    footer {
+        width: 90%;
+        margin: 1rem auto;
+    }
+}

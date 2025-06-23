@@ -1,0 +1,137 @@
+<!-- המגיש : מופלח שיבלי , ת"ז : 214310633--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= film.Title %> – Movie Reviews</title>
+    <link rel="stylesheet" href="/movie.css">
+    <link rel="icon" type="image/gif" href="/fresh.gif">
+</head>
+<body>
+    <!-- Banner -->
+    <header>
+        <img src="/banner.png" alt="Movie Reviews">
+    </header>
+
+    <!-- Movie Title -->
+    <h1><%= film.Title %> (<%= film.Year %>)</h1>
+
+    <main>
+        <!-- Left side: Rating + Reviews -->
+        <section class="left-content">
+            <!-- דירוג -->
+            <div class="rating">
+                <img src="/freshbig.png" alt="Fresh">
+                <span><%= film.Score %>%</span>
+            </div>
+    
+            <!-- ביקורות בשתי עמודות -->
+            <section class="reviews">
+                <% 
+                    const half = Math.ceil(reviews.length / 2); 
+                    const leftReviews = reviews.slice(0, half);
+                    const rightReviews = reviews.slice(half);
+            
+                    function getRandomIcon() {
+                        return Math.random() < 0.5 ? 'fresh.gif' : 'rotten.gif';
+                    }
+                %>
+            
+                <div class="reviews-col-left">
+                    <% leftReviews.forEach(review => { 
+                        const icon = getRandomIcon();
+                    %>
+                        <div class="review-container">
+                            <div class="review">
+                                <img src="/<%= icon %>" alt="Review Icon">
+                                <q><%= review.ReviewText %></q>
+                            </div>
+                            <p class="critic">
+                                <img src="/critic.gif" alt="Critic">
+                                <%= review.ReviewerName %><br>
+                                <em><%= review.Affiliation %></em>
+                            </p>
+                        </div>
+                    <% }); %>
+                </div>
+            
+                <div class="reviews-col-right">
+                    <% rightReviews.forEach(review => { 
+                        const icon = getRandomIcon();
+                    %>
+                        <div class="review-container">
+                            <div class="review">
+                                <img src="/<%= icon %>" alt="Review Icon">
+                                <q><%= review.ReviewText %></q>
+                            </div>
+                            <p class="critic">
+                                <img src="/critic.gif" alt="Critic">
+                                <%= review.ReviewerName %><br>
+                                <em><%= review.Affiliation %></em>
+                            </p>
+                        </div>
+                    <% }); %>
+                </div>
+            </section>
+            
+        </section>
+               <!-- Right: General Overview -->
+               <section class="general-overview">
+                <img src="<%= film.PosterPath %>" alt="<%= film.Title %> Poster">
+                <dl>
+                    <dt>Release Year:</dt>
+                    <dd><%= film.Year %></dd>
+    
+                    <% if (typeof filmDetails !== 'undefined' && filmDetails.Director) { %>
+                        <dt>Director:</dt>
+                        <dd><%= filmDetails.Director %></dd>
+                    <% } %>
+    
+                    <% if (typeof filmDetails !== 'undefined' && filmDetails.Starring) { %>
+                        <dt>Starring:</dt>
+                        <dd><%= filmDetails.Starring %></dd>
+                    <% } %>
+    
+                    <% if (typeof filmDetails !== 'undefined' && filmDetails.Genre) { %>
+                        <dt>Genre:</dt>
+                        <dd><%= filmDetails.Genre %></dd>
+                    <% } %>
+    
+                    <% if (typeof filmDetails !== 'undefined' && filmDetails.Runtime) { %>
+                        <dt>Runtime:</dt>
+                        <dd><%= filmDetails.Runtime %></dd>
+                    <% } %>
+    
+                    <% if (typeof filmDetails !== 'undefined' && filmDetails["Theatrical release"]) { %>
+                        <dt>Theatrical Release:</dt>
+                        <dd><%= filmDetails["Theatrical release"] %></dd>
+                    <% } %>
+    
+                    <% if (typeof filmDetails !== 'undefined' && filmDetails["Movie synopsis"]) { %>
+                        <dt>Movie Synopsis:</dt>
+                        <dd><%= filmDetails["Movie synopsis"] %></dd>
+                    <% } %>
+    
+                    <% if (typeof filmDetails !== 'undefined' && filmDetails["Box office"]) { %>
+                        <dt>Box Office:</dt>
+                        <dd><%= filmDetails["Box office"] %></dd>
+                    <% } %>
+    
+                    <% if (typeof filmDetails !== 'undefined' && filmDetails.Links) { %>
+                        <dt>Links:</dt>
+                        <dd><a href="<%= filmDetails.Links %>" target="_blank">IMDB</a></dd>
+                    <% } %>
+                </dl>
+   
+            </section>
+                      <!-- Footer -->
+ <footer>
+    <%= reviews.length %> of <%= reviews.length - 1 %>
+</footer>
+    </main>
+
+
+ 
+</body>
+</html>
